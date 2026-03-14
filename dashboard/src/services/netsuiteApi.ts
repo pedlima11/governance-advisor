@@ -7,7 +7,7 @@ export interface Credentials {
   tokenSecret: string;
 }
 
-const PROXY_BASE = 'http://localhost:3001';
+const PROXY_BASE = import.meta.env.DEV ? 'http://localhost:3001' : '';
 
 export async function fetchSnapshot(creds: Credentials, action = 'snapshot'): Promise<any> {
   const url = action !== 'snapshot'

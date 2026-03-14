@@ -2,9 +2,17 @@ import express from 'express';
 import crypto from 'crypto';
 import cors from 'cors';
 
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// ── Serve dashboard static files ─────────────────────────────────
+app.use(express.static(path.join(__dirname, 'dashboard', 'dist')));
 
 // ── OAuth 1.0 signing ─────────────────────────────────────────────
 function percentEncode(str) {
@@ -120,8 +128,12 @@ app.post('/api/netsuite', async (req, res) => {
 // ── Health check ──────────────────────────────────────────────────
 app.get('/health', (_req, res) => res.json({ status: 'ok' }));
 
-const PORT = 3001;
+// ── SPA fallback — serve index.html for all non-API routes ───────
+app.get('*', (_req, res) => {
+  res.sendFile(path.join(__dirname, 'dashboard', 'dist', 'index.html'));
+});
+
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`🛡️  Governance Proxy rodando em http://localhost:${PORT}`);
-  console.log(`   Dashboard pode chamar POST /api/netsuite`);
+  console.log(`🛡️  Governance Advisor rodando na porta ${PORT}`);
 });
