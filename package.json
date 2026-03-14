@@ -1,0 +1,14 @@
+{
+  "name": "adv-governance-proxy",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "proxy": "node proxy.js",
+    "dashboard": "cd dashboard && npm run dev",
+    "dev": "echo 'Abra 2 terminais:\n  Terminal 1: npm run proxy\n  Terminal 2: npm run dashboard'"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.22.1"
+  }
+}

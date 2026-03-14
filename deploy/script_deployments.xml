@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Script Deployment Instructions
+  ===============================
+
+  1. GATE 0.1 — Suitelet (deploy primeiro para validar governanceLimits)
+     - Script Type: Suitelet
+     - Script File: SuiteScripts/AdaptiveGovernance/test_gate01_sl.js
+     - Script ID: customscript_adv_gate01_test
+     - Deployment ID: customdeploy_adv_gate01_test
+     - Status: Testing
+     - Role: Administrator
+     - Log Level: AUDIT
+
+  2. SCHEDULED SCRIPT (deploy após Gate 0.1 ✅)
+     - Script Type: Scheduled Script
+     - Script File: SuiteScripts/AdaptiveGovernance/adv_governance_advisor_ss.js
+     - Script ID: customscript_adv_governance_advisor
+     - Deployment ID: customdeploy_adv_governance_advisor
+     - Status: Testing (mudar para Scheduled após validação)
+     - Schedule: Every 4 hours (ajustar conforme necessidade)
+     - Log Level: AUDIT
+
+  Deploy Order:
+  =============
+  Fase 1: Custom Record (customrecord_adv_governance_log.xml)
+  Fase 2: Suitelet (test_gate01_sl.js) → Testar → Confirmar Gate 0.1
+  Fase 3: Scheduled Script (adv_governance_advisor_ss.js) → Testing → Scheduled
+-->
+
+<!-- Nota: NetSuite não suporta deploy de scripts via XML puro.
+     As instruções acima são para deploy manual via:
+     Customization > Scripting > Scripts > New
+-->

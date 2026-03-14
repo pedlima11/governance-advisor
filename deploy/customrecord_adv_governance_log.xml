@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Custom Record: Adaptive Governance Advisor Log
+  ID: customrecord_adv_governance_log
+  Descrição: Armazena o histórico de decisões do Governance Advisor
+             para alimentar o motor de recorrência temporal.
+-->
+<customrecordtype scriptid="customrecord_adv_governance_log">
+  <recordname>ADV Governance Log</recordname>
+  <description>Histórico de decisões do Adaptive Integration Governance Advisor</description>
+  <includename>T</includename>
+  <showid>T</showid>
+  <shownotes>F</shownotes>
+  <enablenumbering>F</enablenumbering>
+  <allowinlinemassupdate>F</allowinlinemassupdate>
+  <allowquickadd>F</allowquickadd>
+  <isinactive>F</isinactive>
+  <allowquicksearch>F</allowquicksearch>
+
+  <customrecordcustomfields>
+
+    <!-- Account Limit -->
+    <customrecordcustomfield scriptid="custrecord_adv_account_limit">
+      <label>Account Limit</label>
+      <fieldtype>INTEGER</fieldtype>
+      <description>Limite total de concorrência da conta</description>
+      <ismandatory>F</ismandatory>
+      <displaytype>NORMAL</displaytype>
+    </customrecordcustomfield>
+
+    <!-- Unallocated -->
+    <customrecordcustomfield scriptid="custrecord_adv_unallocated">
+      <label>Unallocated</label>
+      <fieldtype>INTEGER</fieldtype>
+      <description>Slots de concorrência livres para distribuir</description>
+      <ismandatory>F</ismandatory>
+      <displaytype>NORMAL</displaytype>
+    </customrecordcustomfield>
+
+    <!-- Saturation % -->
+    <customrecordcustomfield scriptid="custrecord_adv_saturation_pct">
+      <label>Saturation %</label>
+      <fieldtype>PERCENT</fieldtype>
+      <description>Percentual de saturação do pool de concorrência</description>
+      <ismandatory>F</ismandatory>
+      <displaytype>NORMAL</displaytype>
+    </customrecordcustomfield>
+
+    <!-- Action -->
+    <customrecordcustomfield scriptid="custrecord_adv_action">
+      <label>Action</label>
+      <fieldtype>TEXT</fieldtype>
+      <description>Ação recomendada pelo motor de decisão</description>
+      <ismandatory>F</ismandatory>
+      <displaytype>NORMAL</displaytype>
+    </customrecordcustomfield>
+
+    <!-- Domain -->
+    <customrecordcustomfield scriptid="custrecord_adv_domain">
+      <label>Domain</label>
+      <fieldtype>TEXT</fieldtype>
+      <description>Domínio da decisão (A=concorrência, B=scripts, AB=ambos, NONE=estável)</description>
+      <ismandatory>F</ismandatory>
+      <displaytype>NORMAL</displaytype>
+    </customrecordcustomfield>
+
+    <!-- Urgency -->
+    <customrecordcustomfield scriptid="custrecord_adv_urgency">
+      <label>Urgency</label>
+      <fieldtype>SELECT</fieldtype>
+      <selectrecordtype>-10</selectrecordtype>
+      <description>Nível de urgência da recomendação</description>
+      <ismandatory>F</ismandatory>
+      <displaytype>NORMAL</displaytype>
+      <customfieldoptions>
+        <customfieldoption>
+          <value>LOW</value>
+          <text>LOW</text>
+          <isdefault>T</isdefault>
+        </customfieldoption>
+        <customfieldoption>
+          <value>MEDIUM</value>
+          <text>MEDIUM</text>
+          <isdefault>F</isdefault>
+        </customfieldoption>
+        <customfieldoption>
+          <value>HIGH</value>
+          <text>HIGH</text>
+          <isdefault>F</isdefault>
+        </customfieldoption>
+      </customfieldoptions>
+    </customrecordcustomfield>
+
+    <!-- Confidence -->
+    <customrecordcustomfield scriptid="custrecord_adv_confidence">
+      <label>Confidence</label>
+      <fieldtype>SELECT</fieldtype>
+      <selectrecordtype>-10</selectrecordtype>
+      <description>Nível de confiança da decisão</description>
+      <ismandatory>F</ismandatory>
+      <displaytype>NORMAL</displaytype>
+      <customfieldoptions>
+        <customfieldoption>
+          <value>LOW</value>
+          <text>LOW</text>
+          <isdefault>T</isdefault>
+        </customfieldoption>
+        <customfieldoption>
+          <value>MEDIUM</value>
+          <text>MEDIUM</text>
+          <isdefault>F</isdefault>
+        </customfieldoption>
+        <customfieldoption>
+          <value>HIGH</value>
+          <text>HIGH</text>
+          <isdefault>F</isdefault>
+        </customfieldoption>
+      </customfieldoptions>
+    </customrecordcustomfield>
+
+    <!-- Reason -->
+    <customrecordcustomfield scriptid="custrecord_adv_reason">
+      <label>Reason</label>
+      <fieldtype>TEXTAREA</fieldtype>
+      <description>Justificativa da decisão em linguagem natural</description>
+      <ismandatory>F</ismandatory>
+      <displaytype>NORMAL</displaytype>
+    </customrecordcustomfield>
+
+    <!-- Enrichment Source -->
+    <customrecordcustomfield scriptid="custrecord_adv_enrichment_src">
+      <label>Enrichment Source</label>
+      <fieldtype>TEXT</fieldtype>
+      <description>Fonte dos dados de enrichment (SUITEQL/PARTIAL/NONE)</description>
+      <ismandatory>F</ismandatory>
+      <displaytype>NORMAL</displaytype>
+    </customrecordcustomfield>
+
+    <!-- Manual Trail JSON -->
+    <customrecordcustomfield scriptid="custrecord_adv_manual_trail">
+      <label>Manual Trail JSON</label>
+      <fieldtype>TEXTAREA</fieldtype>
+      <description>JSON com trilha manual para ação humana</description>
+      <ismandatory>F</ismandatory>
+      <displaytype>NORMAL</displaytype>
+    </customrecordcustomfield>
+
+  </customrecordcustomfields>
+
+</customrecordtype>

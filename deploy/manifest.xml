@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest projecttype="ACCOUNTCUSTOMIZATION">
+  <projectname>AdaptiveGovernanceAdvisor</projectname>
+  <frameworkversion>1.0</frameworkversion>
+  <dependencies>
+    <features>
+      <feature required="true">RESTWEBSERVICES</feature>
+    </features>
+  </dependencies>
+  <objects>
+    <object>
+      <path>~/Objects/customrecord_adv_governance_log.xml</path>
+    </object>
+  </objects>
+  <files>
+    <file>
+      <path>~/FileCabinet/SuiteScripts/AdaptiveGovernance/adv_governance_advisor_ss.js</path>
+    </file>
+    <file>
+      <path>~/FileCabinet/SuiteScripts/AdaptiveGovernance/test_gate01_sl.js</path>
+    </file>
+  </files>
+</manifest>
