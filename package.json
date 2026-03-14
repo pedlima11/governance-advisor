@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "start": "node proxy.js",
     "proxy": "node proxy.js",
     "dashboard": "cd dashboard && npm run dev",
     "dev": "echo 'Abra 2 terminais:\n  Terminal 1: npm run proxy\n  Terminal 2: npm run dashboard'"
