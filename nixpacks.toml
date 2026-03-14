@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ["nodejs_18"]
+
+[phases.install]
+cmds = ["npm install", "cd dashboard && npm install"]
+
+[phases.build]
+cmds = ["cd dashboard && npm run build"]
+
+[start]
+cmd = "node proxy.js"

@@ -12,7 +12,14 @@ app.use(cors());
 app.use(express.json());
 
 // ── Serve dashboard static files ─────────────────────────────────
-app.use(express.static(path.join(__dirname, 'dashboard', 'dist')));
+import fs from 'fs';
+const distPath = path.join(__dirname, 'dashboard', 'dist');
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
+  console.log('📁 Serving dashboard from', distPath);
+} else {
+  console.warn('⚠️  dashboard/dist not found — run "npm run build" first');
+}
 
 // ── OAuth 1.0 signing ─────────────────────────────────────────────
 function percentEncode(str) {
@@ -130,7 +137,12 @@ app.get('/health', (_req, res) => res.json({ status: 'ok' }));
 
 // ── SPA fallback — serve index.html for all non-API routes ───────
 app.get('*', (_req, res) => {
-  res.sendFile(path.join(__dirname, 'dashboard', 'dist', 'index.html'));
+  const indexPath = path.join(__dirname, 'dashboard', 'dist', 'index.html');
+  if (fs.existsSync(indexPath)) {
+    res.sendFile(indexPath);
+  } else {
+    res.status(503).send('Dashboard not built. Run: npm run build');
+  }
 });
 
 const PORT = process.env.PORT || 3001;
