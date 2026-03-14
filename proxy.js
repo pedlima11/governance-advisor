@@ -146,6 +146,6 @@ app.get('*', (_req, res) => {
 });
 
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`🛡️  Governance Advisor rodando na porta ${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🛡️  Governance Advisor rodando em 0.0.0.0:${PORT}`);
 });
